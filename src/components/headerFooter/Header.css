@@ -1,0 +1,60 @@
+.mainHeader {
+  display: flex;
+  justify-content: space-around;
+  background: #a03037 0% 0% no-repeat padding-box;
+  opacity: 1;
+  align-items: center;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 60px;
+  color: aliceblue;
+  border: 1px solid purple;
+  cursor: pointer;
+}
+.logoTitle {
+  display: flex;
+  top: 17px;
+  left: 201px;
+  width: 118px;
+  height: 26px;
+  text-align: left;
+  font: normal normal normal 20px/26px Roboto;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: capitalize;
+  opacity: 1;
+  /* border: 1px solid yellow; */
+  justify-content: space-between;
+}
+
+.searchInpuut {
+  top: 14px;
+  left: 334px;
+  width: 490px;
+  height: 33px;
+  background: #fcfcfc 0% 0% no-repeat padding-box;
+  border-radius: 3px;
+  opacity: 1;
+  border: none;
+}
+
+.searchTxt {
+  top: 23px;
+  left: 368px;
+  width: 49px;
+  height: 16px;
+  text-align: left;
+  font: normal normal normal 12px/16px Roboto;
+  letter-spacing: 0px;
+  color: #9d9d9d;
+  opacity: 1;
+}
+.profilrMycart {
+  display: flex;
+  width: 120px;
+  /* border: 2px solid purple; */
+  cursor: pointer;
+  justify-content: space-between;
+  align-items: center;
+}
