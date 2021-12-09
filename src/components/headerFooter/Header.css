@@ -39,6 +39,9 @@
   border: none;
 }
 
+.searchBox{
+  display: flex;
+}
 .searchTxt {
   top: 23px;
   left: 368px;

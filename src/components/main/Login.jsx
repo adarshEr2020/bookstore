@@ -1,7 +1,9 @@
 import React, { useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import { userLogin } from '../../services/services';
 import './Login.css'
 function Login() {
+	const history= useHistory()
 	const [loginObj,setLoginObj] = useState({
 		email:'',
 		password:''
@@ -18,6 +20,7 @@ function Login() {
 	  const onSubmitLogin=(e)=>{
 		userLogin(loginObj).then((response)=>{
 			console.log(response);
+			history.push('/home')
 		}).catch((err)=>{
 			console.warn(err);
 		})

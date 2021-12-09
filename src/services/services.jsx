@@ -20,7 +20,7 @@ export const userSignup = async (obj) => {
 
 export const userLogin = async (obj) => {
   let response = await axios.post(`${url}bookstore_user/login`, obj, config);
-  localStorage.setItem("token", response.data.success);
+  localStorage.setItem("token", response.data.message);
   return response;
 };
 

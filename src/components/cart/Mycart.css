@@ -1,0 +1,70 @@
+.myCartContainer {
+  width: 774px;
+  height: 251px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  border-radius: 1px;
+  margin-left: 8%;
+}
+
+.addressOrderDetailContainer {
+  display: flex;
+  width: 774px;
+  height: 60px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dcdcdc;
+  border-radius: 1px;
+  opacity: 1;
+  margin-top: 1%;
+  margin-left: 8%;
+}
+.textAndLocationContain {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.selectLocationFeild{
+  border: none;
+  font-size: medium;
+}
+.txt {
+  margin-left: 2%;
+  color: #707070;
+}
+
+.bookImgAddDetails {
+  display: flex;
+  justify-content: space-between;
+  width: 236px;
+  height: 89px;
+  /* border: 1px solid blue;   */
+  margin-left: 2%;
+}
+
+.bookImgDiv {
+  width: 65px;
+  height: 85px;
+  background: transparent url("../../assets/Book_3.png") 0% 0% no-repeat
+    padding-box;
+  background-size: 100%;
+  opacity: 1;
+}
+
+.text {
+  text-align: left;
+  font: normal normal normal 14px/17px;
+  letter-spacing: 0px;
+  color: #0a0102;
+  opacity: 2;
+}
+
+.placeOrderBtn{
+  display: flex;
+  justify-content: flex-end;
+  /* align-items: flex-end; */
+  align-items: center;
+  margin-right: 2%;
+  
+}
