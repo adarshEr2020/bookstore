@@ -1,5 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Book.css";
+import {
+  addToCart,
+  cartQuantityItem,
+  getCartItems,
+} from "../../services/services";
 import Header from "../headerFooter/Header";
 import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
@@ -8,14 +13,67 @@ import { useHistory } from "react-router-dom";
 
 export default function Book() {
   const [addtoBag, setAddToBag] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [cartitemsid, setCartitemsid] = useState("");
   let history = useHistory();
-  console.log(history);
 
-  const openAddtocart = () => {
+  const openAddtocart = (productId) => {
+    addToCart(productId)
+      .then((response) => {
+        console.log("addtocart response", response);
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
     setAddToBag(true);
   };
-  console.log(addtoBag);
+  // console.log(addtoBag);
+  console.log(cartitemsid);
 
+  // ***********************************
+  useEffect(() => {
+    getAllCartItems();
+  }, [quantity]);
+
+  const getAllCartItems = () => {
+    getCartItems()
+      .then((response) => {
+        console.log("getCartItems", response);
+        setCartitemsid(response.data.result[0]._id);
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+  };
+
+  // ***********************
+
+  const decrementCartItem = (cartId) => {
+    // console.log("decrimented items");
+    let obj = { quantityToBuy: quantity - 1 };
+    cartQuantityItem(cartId, obj)
+      .then((response) => {
+        console.log(response.data);
+        setQuantity(quantity - 1);
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+    setQuantity(quantity - 1);
+  };
+
+  const incrementCartItem = (cartId) => {
+    // console.log("incremented items");
+    let obj = { quantityToBuy: quantity + 1 };
+    cartQuantityItem(cartId, obj)
+      .then((response) => {
+        console.log(response.data);
+        setQuantity(quantity + 1);
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+  };
   return (
     <div>
       <Header />
@@ -33,26 +91,47 @@ export default function Book() {
               <div className="bookImg"></div>
             </div>
 
-            <div className="btnAddto" style={{ display: "flex" }}>
+            <div className="btnAddto">
               {!addtoBag ? (
                 <Button
                   variant="contained"
                   color="secondary"
-                  onClick={openAddtocart}
+                  onClick={() =>
+                    openAddtocart(history.location.state.productId)
+                  }
                 >
                   ADD TO BAG
                 </Button>
               ) : (
-                <div id="addtocart" style={{ display: "flex" }}>
-                  <div className="less"> - </div>
-                  <div className="countbox">0</div>
-                  <div className="more">＋</div>
+                <div
+                  id="addtocart"
+                  className="addToCart"
+                  style={{ display: "flex" }}
+                >
+                  <div
+                    id="addtocart"
+                    className="less"
+                    onClick={() => decrementCartItem(cartitemsid)}
+                  >
+                    -
+                  </div>
+                  <div id="addtocart" className="countbox">
+                    {quantity}
+                  </div>
+                  <div
+                    id="addtocart"
+                    className="more"
+                    onClick={() => incrementCartItem(cartitemsid)}
+                  >
+                    ＋
+                  </div>
                 </div>
               )}
-
-              <Button variant="contained" color="primary">
-                WISHLIST
-              </Button>
+              <div>
+                <Button variant="contained" color="primary">
+                  WISHLIST
+                </Button>
+              </div>
             </div>
           </div>
           <div className="bookDetailsContainer">

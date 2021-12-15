@@ -1,10 +1,12 @@
 .myCartContainer {
   width: 774px;
-  height: 251px;
+  min-height: 251px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #707070;
   border-radius: 1px;
   margin-left: 8%;
+  display: flex;
+  flex-direction: column;
 }
 
 .addressOrderDetailContainer {
@@ -12,7 +14,8 @@
   width: 774px;
   height: 60px;
   background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #dcdcdc;
+  /* border: 1px solid #dcdcdc; */
+  border: 1px solid #612c2c;
   border-radius: 1px;
   opacity: 1;
   margin-top: 1%;
@@ -41,6 +44,7 @@
   height: 89px;
   /* border: 1px solid blue;   */
   margin-left: 2%;
+  margin-bottom:5% ;
 }
 
 .bookImgDiv {
@@ -66,5 +70,41 @@
   /* align-items: flex-end; */
   align-items: center;
   margin-right: 2%;
+  margin-bottom: 2%;
   
+}
+.addRemoveCartItems{
+  display: flex;
+  min-width: 150px;
+  /* border: 1px solid red;  */
+  margin-top: 8%;
+  margin-left: 25%;
+  justify-content: space-around;
+  cursor: pointer;
+}
+.sub{
+  width: 20px;
+  height: 20px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+.value{
+  width: 30px;
+  height: 20px;
+  border: 1px solid gray;
+  display: flex;
+  justify-content: center;
+}
+.add{
+  width: 20px;
+  height: 20px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+.remove{
+  border: 1px solid gray;
 }

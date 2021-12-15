@@ -18,7 +18,7 @@ export default function Signup() {
 
   const onSubmitSignup=()=>{
     userSignup(signupObj).then((response)=>{
-        console.log(response);
+        console.log("signup response",response);
       }).catch((err)=>{
         console.warn(err);
       })

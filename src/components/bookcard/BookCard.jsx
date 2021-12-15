@@ -5,10 +5,11 @@ import { getBooks } from "../../services/services";
 export default function BookCard() {
   const [books, setBooks] = useState([]);
   const history = useHistory();
+
   const getAllBooks = () => {
     getBooks()
       .then((response) => {
-        console.log(response.data.result);
+        console.log("getbook", response.data.result);
         setBooks(response.data.result);
       })
       .catch((err) => {
@@ -20,13 +21,18 @@ export default function BookCard() {
     getAllBooks();
   }, []);
 
-  const addBookToCart = (bookName, author, price) => {
-    console.log("addBookToCart clicked");
-    console.log("clicked book", bookName, author, price);
+  const addBookToCart = (bookName, author, price, _id) => {
     history.push({
-      pathname:"/home/book" ,state:{bookname:bookName,author:author,price:price}
+      pathname: "/home/book",
+      state: {
+        bookname: bookName,
+        author: author,
+        price: price,
+        productId: _id,
+      },
     });
   };
+
   return (
     <div>
       <div className="bookCardContainer">
@@ -35,7 +41,7 @@ export default function BookCard() {
             className="booksContainer"
             key={index}
             onClick={() =>
-              addBookToCart(book.bookName, book.author, book.price)
+              addBookToCart(book.bookName, book.author, book.price, book._id)
             }
           >
             <div className="imgContainer">
