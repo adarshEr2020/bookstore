@@ -38,12 +38,41 @@ export const addToCart = async (product_id) => {
   return result;
 };
 
-export const cartQuantityItem =async(cartItem_id,obj) => {
-  let result = await axios.put(`${url}/bookstore_user/cart_item_quantity/${cartItem_id}`,obj,config);
+export const cartQuantityItem = async (cartItem_id, obj) => {
+  let result = await axios.put(
+    `${url}/bookstore_user/cart_item_quantity/${cartItem_id}`,
+    obj,
+    config
+  );
   return result;
-}
+};
 export const getCartItems = async () => {
   let result = await axios.get(`${url}/bookstore_user/get_cart_items`, config);
   return result;
 };
 
+export const removeCartItems = async (cartItem_id) => {
+  let result = await axios.delete(
+    `${url}/bookstore_user/remove_cart_item/${cartItem_id}`,
+    config
+  );
+  return result;
+};
+
+export const updateCustomerDetails = async (customerDetailsobj) => {
+  let result = await axios.put(
+    `${url}/bookstore_user/edit_user`,
+    customerDetailsobj,
+    config
+  );
+  return result;
+};
+
+export const takeOrder = async (orderObj) => {
+  let result = await axios.post(
+    `${url}/bookstore_user/add/order`,
+    orderObj,
+    config
+  );
+  return result;
+};

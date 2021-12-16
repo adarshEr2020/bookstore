@@ -27,10 +27,8 @@ export default function Book() {
       });
     setAddToBag(true);
   };
-  // console.log(addtoBag);
-  console.log(cartitemsid);
+  console.log(addtoBag);
 
-  // ***********************************
   useEffect(() => {
     getAllCartItems();
   }, [quantity]);
@@ -38,15 +36,13 @@ export default function Book() {
   const getAllCartItems = () => {
     getCartItems()
       .then((response) => {
-        console.log("getCartItems", response);
+        console.log("getCartItems", response.data.result);
         setCartitemsid(response.data.result[0]._id);
       })
       .catch((err) => {
         console.warn(err);
       });
   };
-
-  // ***********************
 
   const decrementCartItem = (cartId) => {
     // console.log("decrimented items");
@@ -200,7 +196,6 @@ export default function Book() {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
     </div>
   );
 }

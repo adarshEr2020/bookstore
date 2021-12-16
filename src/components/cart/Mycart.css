@@ -12,7 +12,7 @@
 .addressOrderDetailContainer {
   display: flex;
   width: 774px;
-  height: 60px;
+  min-height: 60px;
   background: #ffffff 0% 0% no-repeat padding-box;
   /* border: 1px solid #dcdcdc; */
   border: 1px solid #612c2c;
@@ -20,6 +20,7 @@
   opacity: 1;
   margin-top: 1%;
   margin-left: 8%;
+  align-items: center;
 }
 .textAndLocationContain {
   display: flex;
