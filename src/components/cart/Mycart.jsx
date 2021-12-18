@@ -14,14 +14,13 @@ import CustomerDetails from "../customerDetails/CustomerDetails";
 
 export default function Mycart() {
   const [cartItems, setCartItems] = useState([]);
-  const [quantity, setQuantity] = useState(1);
   const [openAddressFeilds, setOpenAddressFeilds] = useState(false);
   const [openOrdeSummeryFeilds, setOpenOrdeSummeryFeilds] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
     getAllCartItems();
-  }, [quantity]);
+  }, []);
 
   const getAllCartItems = () => {
     getCartItems()
@@ -36,31 +35,49 @@ export default function Mycart() {
 
   const decrementCartItem = (cartId) => {
     console.log("decrimented items", cartId);
-    let obj = { quantityToBuy: quantity - 1 };
-    cartQuantityItem(cartId, obj)
+    let newCart = cartItems.map((item, index) => {
+      if (item._id === cartId) {
+        upadateQuantity(cartId, item.quantityToBuy - 1);
+        return {
+          ...item,
+          quantityToBuy: item.quantityToBuy - 1,
+        };
+      } else {
+        return item;
+      }
+    });
+    setCartItems(newCart);
+  };
+
+  const upadateQuantity = (id, quantity1) => {
+    // console.log("id", id, "quan", quantity1);
+    let obj = { quantityToBuy: quantity1 };
+    cartQuantityItem(id, obj)
       .then((response) => {
-        console.log(response.data);
-        setQuantity(quantity - 1);
+        console.log("quantity", response.data.message);
+        // getAllCartItems()
       })
       .catch((err) => {
         console.warn(err);
       });
-    setQuantity(quantity - 1);
   };
 
   const incrementCartItem = (cartId) => {
-    console.log("incremented items", cartId);
-    let obj = { quantityToBuy: quantity + 1 };
-    cartQuantityItem(cartId, obj)
-      .then((response) => {
-        console.log(response.data);
-        setQuantity(quantity + 1);
-      })
-      .catch((err) => {
-        console.warn(err);
-      });
+    // console.log("incremented items", cartId);
+    let newCart = cartItems.map((item, index) => {
+      if (item._id === cartId) {
+        upadateQuantity(cartId, item.quantityToBuy + 1);
+        return {
+          ...item,
+          quantityToBuy: item.quantityToBuy + 1,
+        };
+      } else {
+        return item;
+      }
+    });
+    setCartItems(newCart);
   };
-  console.log(cartItems);
+  console.log("cartItems", cartItems);
 
   const deleteCartItems = (cartId) => {
     removeCartItems(cartId)
@@ -133,22 +150,22 @@ export default function Mycart() {
               <div className="addRemoveCartItems">
                 <span
                   className="sub"
-                  onClick={() => decrementCartItem(cartItems[index]._id)}
+                  onClick={() => decrementCartItem(product._id)}
                 >
                   -
                 </span>
                 <span className="value" id={product._id}>
-                  {quantity}
+                  {product.quantityToBuy}
                 </span>
                 <span
                   className="add"
-                  onClick={() => incrementCartItem(cartItems[index]._id)}
+                  onClick={() => incrementCartItem(product._id)}
                 >
                   +
                 </span>
                 <span
                   className="remove"
-                  onClick={() => deleteCartItems(cartItems[index]._id)}
+                  onClick={() => deleteCartItems(product._id)}
                 >
                   Remove
                 </span>
@@ -169,7 +186,7 @@ export default function Mycart() {
         </div>
       </div>
       <div className="addressOrderDetailContainer">
-        {openAddressFeilds ? (
+        {!openAddressFeilds ? (
           <div className="txt">Address Details</div>
         ) : (
           <CustomerDetails continueOrder={continueOrder} />
@@ -177,7 +194,7 @@ export default function Mycart() {
       </div>
 
       <div className="addressOrderDetailContainer">
-        {openOrdeSummeryFeilds ? (
+        {!openOrdeSummeryFeilds ? (
           <h4 className="txt">Order Summery</h4>
         ) : (
           <div className="orderSummeryContainer">

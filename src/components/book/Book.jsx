@@ -27,7 +27,7 @@ export default function Book() {
       });
     setAddToBag(true);
   };
-  console.log(addtoBag);
+  // console.log(addtoBag)
 
   useEffect(() => {
     getAllCartItems();
