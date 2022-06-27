@@ -16,48 +16,53 @@ export default function Signup() {
     console.log(signupObj);
   };
 
-  const onSubmitSignup=()=>{
-    userSignup(signupObj).then((response)=>{
-        console.log("signup response",response);
-      }).catch((err)=>{
-        console.warn(err);
+  const onSubmitSignup = (e) => {
+    e.preventDefault();
+    userSignup(signupObj)
+      .then((response) => {
+        console.log("signup response", response);
       })
-  }
+      .catch((err) => {
+        console.warn(err);
+      });
+  };
   return (
-    <div className="signUpContainer">
-        <input
-          className="inputClass"
-          type="text"
-          placeholder="Full Name"
-          name="fullName"
-          value={signupObj.fullName}
-          onChange={(e) => handleOnchange(e)}
-        />
-        <input
-          className="inputClass"
-          type="text"
-          placeholder="Email"
-          name="email"
-          value={signupObj.email}
-          onChange={(e) => handleOnchange(e)}
-        />
-        <input
-          className="inputClass"
-          type="text"
-          placeholder="Password"
-          name="password"
-          value={signupObj.password}
-          onChange={(e) => handleOnchange(e)}
-        />
-        <input
-          className="inputClass"
-          type="text"
-          placeholder="Mobile Number"
-          name="phone"
-          value={signupObj.phone}
-          onChange={(e) => handleOnchange(e)}
-        />
-        <button className="signUpBtn" onClick={onSubmitSignup}>Signup</button>
-    </div>
+    <form className="signUpContainer" onSubmit={onSubmitSignup}>
+      <input
+        className="inputClass"
+        type="text"
+        placeholder="Full Name"
+        name="fullName"
+        value={signupObj.fullName}
+        onChange={(e) => handleOnchange(e)}
+      />
+      <input
+        className="inputClass"
+        type="text"
+        placeholder="Email"
+        name="email"
+        value={signupObj.email}
+        onChange={(e) => handleOnchange(e)}
+      />
+      <input
+        className="inputClass"
+        type="text"
+        placeholder="Password"
+        name="password"
+        value={signupObj.password}
+        onChange={(e) => handleOnchange(e)}
+      />
+      <input
+        className="inputClass"
+        type="text"
+        placeholder="Mobile Number"
+        name="phone"
+        value={signupObj.phone}
+        onChange={(e) => handleOnchange(e)}
+      />
+      <button className="signUpBtn" type="submit">
+        Signup
+      </button>
+    </form>
   );
 }

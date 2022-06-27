@@ -17,6 +17,7 @@ function Login() {
   };
 
   const onSubmitLogin = (e) => {
+    e.preventDefault();
     userLogin(loginObj)
       .then((response) => {
         console.log("login respponse", response.data);
@@ -27,7 +28,7 @@ function Login() {
       });
   };
   return (
-    <div className="loginContainer">
+    <form className="loginContainer" onSubmit={onSubmitLogin}>
       <input
         className="inputClass"
         type="text"
@@ -44,7 +45,7 @@ function Login() {
         value={loginObj.password}
         onChange={(e) => handleOnchange(e)}
       />
-      <button className="loginBtn" onClick={onSubmitLogin}>
+      <button className="loginBtn" type="submit">
         Login
       </button>
       <div className="ORBtn">OR</div>
@@ -52,7 +53,7 @@ function Login() {
         <div className="socialTxt ftxt">Facebook</div>
         <div className="socialTxt gtxt">Google</div>
       </div>
-    </div>
+    </form>
   );
 }
 
