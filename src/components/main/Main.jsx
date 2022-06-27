@@ -5,9 +5,11 @@ import Signup from "./Signup";
 import shoppingImage from "../../assets/onlineBookShopping.png";
 function Main() {
   const [toggleoginSignup, setClickLoginSignup] = useState(true);
+  const [active, setActive] = useState(true);
 
   const handleClickLoginSignup = () => {
     setClickLoginSignup(!toggleoginSignup);
+    setActive(!active);
     console.log("isSignup", toggleoginSignup);
   };
   return (
@@ -28,18 +30,24 @@ function Main() {
         <div className="loginSignupContainer">
           <div className="loginSignup">
             <div className="loginSignUpText">
-              <span
-                className="loginsignuptxt"
-                onClick={() => handleClickLoginSignup()}
-              >
-                LOGIN
-              </span>
-              <span
-                className="loginsignuptxt"
-                onClick={() => handleClickLoginSignup()}
-              >
-                SIGNUP
-              </span>
+              <div>
+                <span
+                  className="loginsignuptxt"
+                  onClick={() => handleClickLoginSignup()}
+                >
+                  LOGIN
+                </span>
+                {active ? <div className="underline"></div> : <></>}
+              </div>
+              <div>
+                <span
+                  className="loginsignuptxt"
+                  onClick={() => handleClickLoginSignup()}
+                >
+                  SIGNUP
+                </span>
+                {active ? <></> : <div className="underline"></div>}
+              </div>
             </div>
             <div className="actualLoginSignup">
               {toggleoginSignup ? <Login /> : <Signup />}

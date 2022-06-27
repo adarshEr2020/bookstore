@@ -14,6 +14,7 @@
 
 .signUpBtn{
 	background: #A03037 0% 0% no-repeat padding-box;
+	border:#A03037;
 	border-radius: 3px;
 	width: 100%;
 	opacity: 1;
