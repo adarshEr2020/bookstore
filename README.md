@@ -1,5 +1,5 @@
 Bookstore application:
-
+open live now https://bookstore-live.netlify.app/
 snapshot of the project-
 
 ![Screenshot (149)](https://user-images.githubusercontent.com/83210478/146642465-463dff92-49cd-484f-ac72-dd35a6f1421b.png)
