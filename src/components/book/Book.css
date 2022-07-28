@@ -51,8 +51,8 @@
 }
 
 .bookImg {
-  background: transparent url("../../assets/Book_3.png") 0% 0% no-repeat
-    padding-box;
+  /* background: transparent url("../../assets/Book_3.png") 0% 0% no-repeat
+    padding-box; */
   background-size: 100%;
   width: 160px;
   height: 200px;

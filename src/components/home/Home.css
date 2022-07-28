@@ -39,8 +39,8 @@
 }
 
 .imgInsideCard {
-  background: transparent url("../../assets/Book_3.png") 0% 0% no-repeat
-    padding-box;
+  /* background: transparent url("../../assets/Book_3.png") 0% 0% no-repeat
+    padding-box; */
   background-size: 100%;
   width: 105px;
   height: 135px;

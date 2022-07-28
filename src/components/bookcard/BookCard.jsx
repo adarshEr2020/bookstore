@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { getBooks } from "../../services/services";
+import { bookURL } from "../../data/BookURL.js";
 
 export default function BookCard() {
   const [books, setBooks] = useState([]);
@@ -9,8 +10,11 @@ export default function BookCard() {
   const getAllBooks = () => {
     getBooks()
       .then((response) => {
-        console.log("getbook", response.data.result);
-        setBooks(response.data.result);
+        // console.log("getbook", response.data.result);
+        const addBookURL = response.data.result.map((item, index) => {
+          return { ...item, image: bookURL[index] };
+        });
+        setBooks(addBookURL);
       })
       .catch((err) => {
         console.warn(err);
@@ -21,7 +25,7 @@ export default function BookCard() {
     getAllBooks();
   }, []);
 
-  const addBookToCart = (bookName, author, price, _id) => {
+  const addBookToCart = (bookName, author, price, _id,image) => {
     history.push({
       pathname: "/home/book",
       state: {
@@ -29,6 +33,7 @@ export default function BookCard() {
         author: author,
         price: price,
         productId: _id,
+        image:image
       },
     });
   };
@@ -41,11 +46,11 @@ export default function BookCard() {
             className="booksContainer"
             key={index}
             onClick={() =>
-              addBookToCart(book.bookName, book.author, book.price, book._id)
+              addBookToCart(book.bookName, book.author, book.price, book._id,book.image)
             }
           >
             <div className="imgContainer">
-              <div className="imgInsideCard"></div>
+              <img src={book.image} alt="bookImage.png" className="imgInsideCard" />
             </div>
             <div className="bookCardTextContent">
               <div className="bookNameText">

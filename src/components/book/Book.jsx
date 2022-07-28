@@ -36,7 +36,7 @@ export default function Book() {
   const getAllCartItems = () => {
     getCartItems()
       .then((response) => {
-        console.log("getCartItems", response.data.result);
+        // console.log("getCartItems", response.data.result);
         setCartitemsid(response.data.result[0]._id);
       })
       .catch((err) => {
@@ -84,7 +84,7 @@ export default function Book() {
         <div className="mainBookcardContainer">
           <div className="bookContainerWithbtn">
             <div className="bookCardImg">
-              <div className="bookImg"></div>
+              <img src={history.location.state.image} alt="bookImg.png" className="bookImg"/>
             </div>
 
             <div className="btnAddto">
